@@ -1,0 +1,39 @@
+/** Hot Threads **/
+.hothread-index {
+  margin-bottom: 10px; padding-bottom: 10px; border-bottom: 2px solid #cc99ff;
+}
+.thread-index .hothread-index,a:hover {
+  text-decoration: none;
+}
+.hothreads {
+  max-height: 350px; overflow-y: auto; margin-bottom: 30px;
+}
+.thread-index {
+  border-left: 3px solid #cc99ff; margin-bottom: 20px; padding-bottom: 10px;
+}
+.thread-title {
+  color: black; height: 3em; overflow: hidden;
+}
+.thread-title:hover {
+  color: #e600e6;
+}
+.thread-starter {
+  color: blue;
+}
+/** End of index Forum**/
+@media screen and (max-width: 450px){
+  .thread-index-parent {
+    padding: 5px;
+  }
+  .thread-index {
+    padding-left: 5px;
+  }
+}
+@media screen and (min-width: 450px){
+  .thread-index {
+    padding-left: 5px;
+  }
+}
+@media screen and (min-width: 800px){
+  
+}

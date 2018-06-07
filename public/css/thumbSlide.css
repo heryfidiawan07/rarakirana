@@ -1,0 +1,10 @@
+.inner-thumb div {
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+.inner-thumb > .item > img {
+	max-width: 100%;
+	min-height: 100%;
+	margin: 0 auto;
+}

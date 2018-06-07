@@ -1,0 +1,105 @@
+/**Hots Product **/
+.index-hotproducts {
+  margin-bottom: 20px;
+}
+.hotproducts-img {
+  width: 40%; float: left; margin: 0 auto;
+}
+/**Product Index**/
+.product-index:hover > .index-img img {
+  transform: scale(1.1);
+}
+.index-img img {
+  transition: transform 1s;
+}
+.product-index {
+  margin-bottom: 10px; position: relative; z-index: 2;
+}
+/**New Product**/
+.new-product {
+  display: inline-block; width: 320px; white-space: nowrap; padding: 20px;
+}
+.new-product .product-title {
+  white-space: normal; display: flex; height: 3em;
+}
+/**================**/
+.new-img, .index-img, .hotproducts-img {
+  overflow : hidden; background-color: black;
+}
+.menus b {
+  color: green;
+}
+.menus small {
+  color: black;
+}
+.product-title {
+  color: black; height: 3em; overflow: hidden;
+}
+.product-title:hover {
+  color: #e600e6;
+}
+/** New Product **/
+.new-img {
+  height: 120px;
+}
+.new-img .inner-thumb img {
+	height: 120px;
+}
+@media screen and (max-width: 450px){
+  /** Hot Products **/
+  .index-hotproducts {
+    padding-left: 2px; margin-bottom: 20px;
+  }
+  .hotproducts-img {
+    margin-right: 5px; overflow: hidden; height: 70px;
+  }
+  .hotproducts-img .inner-thumb img {
+    height: 70px;
+  }
+  /** new Product **/
+  .new-product {
+    display: inline-block; width: 250px; white-space: normal; padding: 10px;
+  }
+  /** Product Index **/
+  .index-img {
+    height: 150px;
+  }
+  .index-img .inner-thumb img {
+    height: 150px;
+  }
+}
+@media screen and (min-width: 450px){
+  /** Product Index **/
+  .index-img {
+    height: 200px;
+  }
+  .index-img .inner-thumb img {
+    height: 200px;
+  }
+  /** Hot Produk **/
+  .index-hotproducts {
+    padding-left: 5px;
+  }
+  .hotproducts-img {
+    margin-right: 5px; overflow: hidden; height: 100px;
+  }
+  .hotproducts-img .inner-thumb img {
+    height: 100px;
+  }
+}
+@media screen and (min-width: 800px){
+	/** Product Index **/
+  .index-img {
+    height: 120px; overflow: hidden;
+  }
+  .index-img .inner-thumb img {
+    height: 120px;
+  }
+  /** Hot Produk **/
+  .hotproducts-img {
+    margin-right: 5px; overflow: hidden; height: 80px;
+  }
+  .hotproducts-img .inner-thumb img {
+    height: 80px;
+  }
+}

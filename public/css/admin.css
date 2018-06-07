@@ -1,0 +1,170 @@
+.user-table {
+	height: 500px;
+	overflow-y: auto;
+}
+/**scroll Promo Display **/
+div.scrollpromo {
+    overflow: auto;
+    white-space: nowrap;
+}
+
+div.scrollpromo figure {
+    display: inline-block;
+    text-align: center;
+    padding: 5px;
+}
+/**End scroll**/
+.modal.left .modal-dialog, .modal.right .modal-dialog {
+	position: fixed;
+	margin: auto;
+	width: 40%;
+	height: 100%;
+	-webkit-transform: translate3d(0%, 0, 0);
+	    -ms-transform: translate3d(0%, 0, 0);
+	     -o-transform: translate3d(0%, 0, 0);
+	        transform: translate3d(0%, 0, 0);
+}
+.modal.left .modal-content, .modal.right .modal-content {
+	height: 100%;
+	overflow-y: auto;
+}
+.modal.left .modal-body, .modal.right .modal-body {
+	padding: 5px 5px 5px;
+}
+/*Left*/
+.modal.left.fade .modal-dialog, .modal.left.fade .modal-dialog {
+	-webkit-transition: opacity 0.3s linear, left 0.3s ease-out;
+	   -moz-transition: opacity 0.3s linear, left 0.3s ease-out;
+	     -o-transition: opacity 0.3s linear, left 0.3s ease-out;
+	        transition: opacity 0.3s linear, left 0.3s ease-out;
+}
+.modal.left.fade.in .modal-dialog {
+	left: 0;
+}
+/*Right*/
+.modal.right.fade .modal-dialog {
+	right: -320px;
+	-webkit-transition: opacity 0.3s linear, right 0.3s ease-out;
+	   -moz-transition: opacity 0.3s linear, right 0.3s ease-out;
+	     -o-transition: opacity 0.3s linear, right 0.3s ease-out;
+	        transition: opacity 0.3s linear, right 0.3s ease-out;
+}
+.modal.right.fade.in .modal-dialog {
+	right: 0;
+}
+/** Admin CSS **/
+#scrollY {
+	width: auto; overflow-x: scroll; white-space:nowrap; height: auto;
+}
+#descPromo {
+	height: 200px;
+	overflow-y: hidden;
+}
+.table-index {
+  border: hidden;
+}
+#info {
+	color: green;
+	font-weight: bold;
+	text-decoration: none;
+}
+#statusOn {
+	color: green;
+	font-weight: bold;
+	text-decoration: none;
+}
+#statusOff {
+	color: red;
+	font-weight: bold;
+	text-decoration: none;
+}
+#delete {
+	color: red;
+	font-weight: bold;
+	text-decoration: none;
+}
+#edit {
+	color: navy;
+	font-weight: bold;
+	text-decoration: none;
+}
+#preview {
+	font-weight: bold;
+	text-decoration: none;
+}
+.pdashboard a {
+	color: black;
+}
+.dashboardUi {
+	max-width: 100%;
+	height: auto;
+	margin-bottom: 3px;
+	padding: 3px;
+}
+.dashboad-title {
+	height: 3em;
+}
+.dashboardUi a {
+	text-decoration: none;
+}
+#ui1 {
+	background-color: aqua;
+	height: 200px;
+	padding: 10px 10px;
+}
+#ui2 {
+	background-color: pink;
+	height: 200px;
+	padding: 10px 10px;
+}
+#ui3 {
+	background-color: brown;
+	height: 200px;
+	padding: 10px 10px;
+}
+#ui4 {
+	background-color: lightgrey;
+	height: 200px;
+	padding: 10px 10px;
+}
+#ui5 {
+	background-color: hotpink;
+	height: 200px;
+	padding: 10px 10px;
+}
+#ui6 {
+	background-color: limeGreen;
+	height: 200px;
+	padding: 10px 10px;
+}
+#ui7 {
+	background-color: orange;
+	height: 200px;
+	padding: 10px 10px;
+}
+#ui8 {
+	background-color: lightblue;
+	height: 200px;
+	padding: 10px 10px;
+}
+#ui9 {
+	background-color: purple;
+	height: 200px;
+	padding: 10px 10px;
+}
+.modal-body {
+	background-color: PaleGoldenRod;
+}
+@media screen and (max-width: 450px){
+	.admin-thumb {
+		width: 100px; height: 80px; background-color: black; overflow: hidden;
+	}
+}
+@media screen and (min-width: 450px){
+	.admin-thumb {
+		width: 150px; height: 100px; background-color: black; overflow: hidden;
+	}
+}
+@media screen and (min-width: 800px){
+
+}

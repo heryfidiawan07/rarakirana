@@ -1,0 +1,53 @@
+.carousel-promo-indicators li {
+  border-radius: 0;
+  width: 15%;
+  height: 5px;
+  margin-bottom: -10px;
+}
+.carousel-promo-indicators .active {
+  border-radius: 0;
+  width: 15%;
+  height: 5px;
+  margin-bottom: -10px;
+}
+.carousel-promo-control.left, .carousel-promo-control.right {
+  background-image: none;
+}
+#carousel-promo-generic {
+	width: 100%;
+}
+.inner-promo div {
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+@media screen and (max-width: 400px){
+	#carousel-promo-generic {
+		height: 100px;
+		overflow-y: hidden;
+	}
+	.inner-promo > .item > img {
+		min-height: 100px;
+		max-height: 100px;
+	}
+}
+@media screen and (min-width: 400px){
+	#carousel-promo-generic {
+		height: 150px;
+		overflow-y: hidden;
+	}
+	.inner-promo > .item > img {
+		min-height: 150px;
+		max-height: 150px;
+	}
+}
+@media screen and (min-width: 800px){
+	#carousel-promo-generic {
+		height: 200px;
+		overflow-y: hidden;
+	}
+	.inner-promo > .item > img {
+		min-height: 200px;
+		max-height: 200px;
+	}
+}
