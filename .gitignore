@@ -6,3 +6,9 @@
 Homestead.json
 Homestead.yaml
 .env
+/public/emoji
+/public/part
+/public/photos
+/public/picture
+/public/promo
+/public/users

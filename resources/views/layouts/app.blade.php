@@ -16,6 +16,8 @@
     <meta name="description"   content="@yield('description')" />
     <meta name="image"         content="@yield('image')" />
 
+    <meta name="google-signin-client_id" content="524555026329-duc32e6en3f62mhdak03hi5scguviu9f.apps.googleusercontent.com">
+
     <!-- Styles -->
     <link href="/css/app.css" rel="stylesheet">
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
@@ -38,7 +40,6 @@
             'csrfToken' => csrf_token(),
         ]); ?>
     </script>
-    
     <script>
       window.fbAsyncInit = function() {
         FB.init({
@@ -59,6 +60,16 @@
          js.src = "https://connect.facebook.net/en_US/sdk.js";
          fjs.parentNode.insertBefore(js, fjs);
        }(document, 'script', 'facebook-jssdk'));
+    </script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-120528530-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-120528530-1');
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/2.5.0/js/md5.min.js"></script>
     <script src='https://www.google.com/recaptcha/api.js'></script>
