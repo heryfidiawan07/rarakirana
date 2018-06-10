@@ -62,7 +62,7 @@ class TwitterController extends Controller
             'name'        => $twitterUser->name,
             'email'       => $twitterUser->email,
             'social'      => $twitterUser->id,
-            'img'         => $img,
+            'graph'         => $img,
             'status'      => 1,
             'token'       => str_random(50),
             'password'    => bcrypt(str_random(20)),

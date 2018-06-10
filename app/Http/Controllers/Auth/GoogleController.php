@@ -61,7 +61,7 @@ class GoogleController extends Controller
             'name'        => $googleUser->name,
             'email'       => $googleUser->email,
             'social'      => $googleUser->id,
-            'img'         => $img,
+            'graph'         => $img,
             'status'      => 1,
             'token'       => str_random(20),
             'password'    => bcrypt(str_random(20)),
