@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->boolean('admin')->default(false);
             $table->string('social')->nullable();
             $table->string('img')->nullable();
+            $table->string('graph')->nullable();
             $table->tinyInteger('status')->default(0);
             $table->string('token');
             $table->rememberToken();

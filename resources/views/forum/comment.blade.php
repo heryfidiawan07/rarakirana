@@ -2,7 +2,7 @@
   <div class="comment"<?php if ($comment->user->status == 2) {echo "style='color:red;'";}?>>
     <div class="usercom">
       <a href="/user/{{$comment->user->slug}}" class="user-comment">
-        <img src="<?php if ($comment->user->img != null) { echo "/users/";} ?>{{$comment->user->avatar()}}" class="img-circle" alt="user" width="50">
+        <img src="<?php if ($comment->user->img != null){ echo "/users/".$comment->user->img;}else if($comment->user->graph != null){echo $comment->user->graph;}else{echo $comment->user->avatar();} ?>" class="img-circle" alt="user" width="50">
       </a>
       <a href="/user/{{$comment->user->slug}}" class="user-comment"><b>{{$comment->user->name}}</b></a>
       @if(Auth::check())

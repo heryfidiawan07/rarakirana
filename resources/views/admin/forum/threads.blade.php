@@ -10,13 +10,15 @@
     	<div class="col-md-9 news">
             <h5 class="text-center">
                 <b>Daftar Threads</b>
-                <a href="/user/forum/create" class="btn btn-primary btn-sm"
+                <a href="
                 <?php
                     if ($menus->count() == 0) {
-                        echo 'disabled';
+                        echo '#';
+                    }else{
+                        echo '/user/forum/create';
                     }
                 ?>
-                ><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Buat Thread</a>
+                " class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Buat Thread</a>
             </h5>
         	@if($threads->count())
               <table class="table table-hover">

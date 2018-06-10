@@ -23,7 +23,7 @@
   <div class="row">
 		<div class="col-md-7">
       <div class="pull-left">
-      	<img src="<?php if ($user->img != null) { echo "/users/";} ?>{{$user->avatar()}}" class="img-responsive" alt="user" style="height: 200px;">
+      	<img src="<?php if ($user->img != null){ echo "/users/".$user->img;}else if($user->graph != null){echo $user->graph;}else{echo $user->avatar();} ?>" class="img-responsive" alt="user" style="height: 200px;">
         @if(Auth::check())
           @if(Auth::user()->id == $user->id)
             <a role="button" data-toggle="collapse" href="#edit-profil" aria-expanded="false" aria-controls="edit-profil">

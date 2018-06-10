@@ -34,7 +34,7 @@ class GoogleController extends Controller
 
     private function findOrCreateUser($googleUser)
     {
-        $authUser = User::where('sosmed', $googleUser->id)->first();
+        $authUser = User::where('social', $googleUser->id)->first();
         $cekslug = User::where('slug', str_slug($googleUser->name))->first();
 
         if ($authUser){

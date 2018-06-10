@@ -67,7 +67,7 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="margin-top: -2px;">
                             {{ Auth::user()->name }} <span class="caret"></span>
-                            <img src="<?php if (Auth::user()->img != null) { echo "/users/";} ?>{{Auth::user()->avatar()}}" class="img-circle" alt="user" style="height: 30px;">
+                            <img src="<?php if (Auth::user()->img != null){ echo "/users/".Auth::user()->img;}else if(Auth::user()->graph != null){echo Auth::user()->graph;}else{echo Auth::user()->avatar();} ?>" class="img-circle" alt="user" style="height: 30px;">
                         </a>
 
                         <ul class="dropdown-menu" role="menu">
