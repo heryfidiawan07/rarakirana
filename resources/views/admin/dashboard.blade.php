@@ -7,8 +7,10 @@
 @section('content')
 <div class="container-fluid">
     <div class="row">
+      
+      <div class="text-center"><h3 class="sub"><b>Admin Dashboard</b></h3></div>
 
-      <div class="col-md-3 col-sm-4 col-xs-6 dashboardUi">
+      <div class="col-md-3 col-sm-4 col-xs-12 dashboardUi">
       	<div id="ui1">
           <div class="dashboad-title">
       		  <b>Membuat menu baru atau edit menu sesuai kebutuhan.</b>
@@ -18,7 +20,7 @@
       	</div>
       </div>
 
-      <div class="col-md-3 col-sm-4 col-xs-6 dashboardUi">
+      <div class="col-md-3 col-sm-4 col-xs-12 dashboardUi">
       	<div id="ui2">
           <div class="dashboad-title">
       		  <b>Posting berita atau artikel atau produk sesuai kebutuhan.</b>
@@ -31,7 +33,7 @@
       	</div>
       </div>
 
-      <div class="col-md-3 col-sm-4 col-xs-6 dashboardUi">
+      <div class="col-md-3 col-sm-4 col-xs-12 dashboardUi">
         <div id="ui3">
           <div class="dashboad-title"><b>Admin Forum</b></div>
           <hr>
@@ -40,7 +42,7 @@
         </div>
       </div>
 
-      <div class="col-md-3 col-sm-4 col-xs-6 dashboardUi">
+      <div class="col-md-3 col-sm-4 col-xs-12 dashboardUi">
         <div id="ui4">
           <div class="dashboad-title">
             <b>Tambahkan logo agar website anda terlihat lebih profesional.</b>
@@ -50,7 +52,7 @@
         </div>
       </div>
 
-      <div class="col-md-3 col-sm-4 col-xs-6 dashboardUi">
+      <div class="col-md-3 col-sm-4 col-xs-12 dashboardUi">
         <div id="ui5">
           <div class="dashboad-title">
             <b>Tambah sebuah promo atau update khusus untuk halaman utama.</b>
@@ -60,7 +62,7 @@
         </div>
       </div>
 
-    	<div class="col-md-3 col-sm-4 col-xs-6 dashboardUi">
+    	<div class="col-md-3 col-sm-4 col-xs-12 dashboardUi">
       	<div id="ui6">
           <div class="dashboad-title"><b>Admin Sosial Media</b></div>
           <hr>
@@ -69,7 +71,7 @@
         </div>
       </div>
 
-      <div class="col-md-3 col-sm-4 col-xs-6 dashboardUi">
+      <div class="col-md-3 col-sm-4 col-xs-12 dashboardUi">
         <div id="ui7">
           <div class="dashboad-title"><b>Statistik Pengunjung</b></div>
           <hr>
@@ -78,7 +80,7 @@
         </div>
       </div>
 
-      <div class="col-md-3 col-sm-4 col-xs-6 dashboardUi">
+      <div class="col-md-3 col-sm-4 col-xs-12 dashboardUi">
         <div id="ui8">
           <div class="dashboad-title"><b>Informasi Admin</b></div>
           <hr>
@@ -86,7 +88,7 @@
         </div>
       </div>
       
-      <div class="col-md-3 col-sm-4 col-xs-6 dashboardUi">
+      <div class="col-md-3 col-sm-4 col-xs-12 dashboardUi">
         <div id="ui9">
           <div class="dashboad-title"><b>Admin Emoji</b></div>
           <hr>
@@ -94,7 +96,7 @@
         </div>
       </div>
     
-    <div class="col-md-9 col-sm-8 col-xs-6 dashboardUi">
+    <div class="col-md-9 col-sm-8 col-xs-12 dashboardUi">
       <div style="overflow-x:auto;">
         <div id="calendar">
           <div id="calendar_header">
