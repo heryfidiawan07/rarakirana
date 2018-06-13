@@ -1,4 +1,4 @@
-<h3 class="sub animated fadeInLeft" style="margin-left: 20px;"><b>Info Terbaru</b></h3><hr>
+<h3 class="sub animated fadeInLeft" style="margin-left: 10px;"><b>Info Terbaru</b></h3><hr>
 <div style="width: auto; overflow-x: auto; white-space:nowrap; height: auto;">
 	@foreach($newproducts as $product)
 		<div class="new-product">
