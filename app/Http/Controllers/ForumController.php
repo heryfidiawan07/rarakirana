@@ -70,9 +70,9 @@ class ForumController extends Controller
 
     public function threads()
     {   
-        $menus = Menu::all();
+        $forum   = Menu::where('forum',1)->first();
         $threads  = Forum::latest()->paginate(20);
-        return view('admin.forum.threads',compact('threads','menus'));
+        return view('admin.forum.threads',compact('threads','forum'));
     }
 
     public function tambahKategori(Request $request){

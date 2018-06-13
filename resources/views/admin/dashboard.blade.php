@@ -35,7 +35,7 @@
 
       <div class="col-md-3 col-sm-4 col-xs-12 dashboardUi">
         <div id="ui3">
-          <div class="dashboad-title"><b>Admin Forum</b></div>
+          <div class="dashboad-title"><b>Forum</b></div>
           <hr>
           <p class="pdashboard"><a href="/admin/forum"><span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span> Buka</a></p>
           <p class="pdashboard"><a href="/admin/threads"><span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span> Threads</a></p>
@@ -64,10 +64,10 @@
 
     	<div class="col-md-3 col-sm-4 col-xs-12 dashboardUi">
       	<div id="ui6">
-          <div class="dashboad-title"><b>Admin Sosial Media</b></div>
+          <div class="dashboad-title"><b>Sosial Media</b></div>
           <hr>
-          <p class="pdashboard"><a href="/admin/share"><span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span> Tombol Share</a></p>
-          <p class="pdashboard"><a href="/admin/follow"><span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span> Tombol Follow</a></p>
+          <p class="pdashboard"><a href="/admin/share"><span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span> Share</a></p>
+          <p class="pdashboard"><a href="/admin/follow"><span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span> Follow</a></p>
         </div>
       </div>
 
@@ -82,7 +82,7 @@
 
       <div class="col-md-3 col-sm-4 col-xs-12 dashboardUi">
         <div id="ui8">
-          <div class="dashboad-title"><b>Informasi Admin</b></div>
+          <div class="dashboad-title"><b>Pesan</b></div>
           <hr>
           <p class="pdashboard"><a href="/admin/inbox"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Buka</a></p>
         </div>
@@ -90,7 +90,7 @@
       
       <div class="col-md-3 col-sm-4 col-xs-12 dashboardUi">
         <div id="ui9">
-          <div class="dashboad-title"><b>Admin Emoji</b></div>
+          <div class="dashboad-title"><b>Emoji</b></div>
           <hr>
           <p class="pdashboard"><a href="/admin/emoji"><span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span> Buka</a></p>
         </div>

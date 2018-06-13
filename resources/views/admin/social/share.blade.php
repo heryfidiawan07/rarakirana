@@ -71,6 +71,7 @@
                       class="fa fa-{{$share->class}}" target="_blank"></a>
                   </td>
                   <td>@include('admin.social.deleteShare')</td>
+                  <td><span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{$share->user->name}}</td>
                 </tr>
               @endforeach
             </table>

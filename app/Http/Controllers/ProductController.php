@@ -33,8 +33,13 @@ class ProductController extends Controller
 
     public function create()
     {   
-        $forum = Menu::where('forum',1)->first();
-        $menus = Menu::has('contact','<',1)->has('parent','<',1)->where([['parent_id','!=',$forum->id],['forum','!=',1]])->get();
+        $forum = Menu::where('forum',1)->first();//Error jika menu forum belum di tentukan
+        if ($forum) {
+            $menus = Menu::has('contact','<',1)->has('parent','<',1)->where([['parent_id','!=',$forum->id],['forum','!=',1]])->get();
+        }else{
+            $menus = Menu::has('contact','<',1)->has('parent','<',1)->where('forum','!=',1)->get();
+        }
+        
         return view('admin.product.create', compact('menus'));
     }
 

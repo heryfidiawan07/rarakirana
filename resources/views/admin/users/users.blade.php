@@ -5,16 +5,16 @@
 @stop
 @section('content')
 <div class="container">
-    <div class="row">
+  <div class="row">
 
-    	<div class="col-md-6 news">
+    	<div class="col-md-6">
     		@if($users->count())
-          <h5 class="text-center"><b>Daftar User</b></h5>
-          <div class="user-table">
+          <div class="user-table news">
+            <h5 class="text-center"><b>Daftar User</b></h5>
             <table class="table table-hover">
               @foreach($users as $user)
                 <tr <?php if ($user->status == 2) {echo "style='color:red;'";}?>>
-                  <td>{{$user->name}}</td>
+                  <td><a href="/user/{{$user->slug}}">{{$user->name}}</a></td>
                   <td>{{$user->email}}</td>
                   <td>@include('admin.users.modalStatus')</td>
                 </tr>
@@ -25,6 +25,6 @@
         @endif
     	</div>
         
-    </div>
+  </div>
 </div>
 @endsection

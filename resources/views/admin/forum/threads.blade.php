@@ -12,7 +12,7 @@
                 <b>Daftar Threads</b>
                 <a href="
                 <?php
-                    if ($menus->count() == 0) {
+                    if (!$forum) {
                         echo '#';
                     }else{
                         echo '/user/forum/create';

@@ -68,6 +68,7 @@
                 <tr>
                   <td><a href="{{$follow->url}}" class="fa fa-{{$follow->class}}" target="_blank"></a></td>
                   <td>@include('admin.social.deleteFollow')</td>
+                  <td><span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{$follow->user->name}}</td>
                 </tr>
               @endforeach
             </table>

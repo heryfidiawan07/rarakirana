@@ -16,7 +16,7 @@
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
 
-      <div class="modal-header"><h5 class="text-center">Ubah Status user</h5></div>
+      <div class="modal-header"><h5 class="text-center">Ubah Status User</h5></div>
       
       <div class="modal-body">
         <div class="form-group">

@@ -29,7 +29,7 @@
             <a role="button" data-toggle="collapse" href="#edit-profil" aria-expanded="false" aria-controls="edit-profil">
               <span class="glyphicon glyphicon-edit"></span> Edit Profil
             </a>
-            <div class="collapse" id="edit-profil" style="position: absolute;">
+            <div class="collapse" id="edit-profil" style="position: absolute; background-color: lightgrey; padding: 5px;">
               <form class="form-inline" method="POST" action="/user/edit/{{$user->id}}/profil" enctype="multipart/form-data">
               {{csrf_field()}}
                 <div class="form-group">
