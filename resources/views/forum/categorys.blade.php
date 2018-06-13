@@ -5,7 +5,7 @@
 <!-- Modal -->
 <div class="modal left fade" id="category" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
-    <div class="modal-content">
+    <div class="modal-content category-content">
 
       <div class="modal-header category-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&#60; close</span></button>

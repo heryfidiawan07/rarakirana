@@ -42,14 +42,16 @@
 	border: none;
 }
 .category-header {
-  background-color: #e64d00;
-	border-bottom: none;
+  background-color: #1a1a1a; border-bottom: none;
+}
+.category-content {
+	background-color: #4d4d4d; color: white;
 }
 .btn-demo:focus {
 	outline: 0;
 }
 #modal-table td:hover {
-	background-color: #e64d00;
+	background-color: #1a1a1a;
 }
 .modal-content a {
   font-weight: bold;

@@ -52,7 +52,7 @@
 
     <div class="col-md-4">
 
-      @if(count($hotproducts))
+      @if($hotproducts->count())
         <div class="news">
           @include('product.hot-products')
         </div>

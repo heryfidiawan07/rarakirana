@@ -21,7 +21,7 @@
 @section('content')
 <div class="container-fluid">
   <div class="row">
-		<div class="col-md-7">
+		<div class="col-md-7 news media">
       <div class="pull-left">
       	<img src="<?php if ($user->img != null){ echo "/users/".$user->img;}else if($user->graph != null){echo $user->graph;}else{echo $user->avatar();} ?>" class="img-responsive" alt="user" style="height: 200px;">
         @if(Auth::check())
@@ -29,7 +29,7 @@
             <a role="button" data-toggle="collapse" href="#edit-profil" aria-expanded="false" aria-controls="edit-profil">
               <span class="glyphicon glyphicon-edit"></span> Edit Profil
             </a>
-            <div class="collapse" id="edit-profil" style="position: absolute; background-color: lightgrey; padding: 5px;">
+            <div class="collapse" id="edit-profil" style="background-color: lightgrey; padding: 5px;">
               <form class="form-inline" method="POST" action="/user/edit/{{$user->id}}/profil" enctype="multipart/form-data">
               {{csrf_field()}}
                 <div class="form-group">
@@ -53,11 +53,11 @@
   </div>
   <hr>
   <div class="row">
-  	<div class="col-md-9">
+  	<div class="col-md-9 news media">
 
       @foreach($user->forums as $thread)
         <a href="/forum/{{$thread->menu->url}}/{{$thread->slug}}">
-          <div class="col-xs-6 thread-index">
+          <div class="col-md-6 col-sm-4 col-xs-12 thread-index">
             <div class="thread-title">
               <b>{{ str_limit($thread->title, $limit = 60, $end = '...') }}</b>
             </div>
