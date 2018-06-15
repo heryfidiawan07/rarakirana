@@ -47,7 +47,7 @@ class UserController extends Controller
             $slug = str_slug($request->name);
             $cekslug = User::where('slug', $slug)->first();
             if (count($cekslug) > 0) {
-                $slug = $slug.'-'.rand();
+                $slug = $slug.'-'.date("YmdHis");
             }
         }else{
             $name = $user->name;

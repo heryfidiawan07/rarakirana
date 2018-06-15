@@ -84,9 +84,9 @@ class ProductController extends Controller
             $key   = 0;
             while ($key < count($files)) {
                 $ex       = $files[$key]->getClientOriginalExtension();
-                $pictName = $key.'-'.strtolower(str_random(20)).'.'.$ex;
+                $pictName = $key.'-'.date("YmdHis").'.'.$ex;
                 $path     = $files[$key]->getRealPath();
-                $img      = Image::make($path)->resize(null, 315, function ($constraint) {
+                $img      = Image::make($path)->resize(null, 630, function ($constraint) {
                                 $constraint->aspectRatio();
                             });
                 $img->save(public_path("picture/img/". $pictName));
@@ -174,7 +174,7 @@ class ProductController extends Controller
         
         if (count($img) < 6) {
             if (count($img)+$jmlPict < 6) {
-                if ($jmlPict != 0) {
+                if (count($img) || $jmlPict) {
                     $user = Auth::user();
                     $uniq = $product->uniq;
                     $product->update([
@@ -192,13 +192,13 @@ class ProductController extends Controller
                         $key   = 0;
                         while ($key < count($files)) {
                             $ex       = $files[$key]->getClientOriginalExtension();
-                            $pictName = $key.'-'.strtolower(str_random(20)).'.'.$ex;
+                            $pictName = $key.'-'.date("YmdHis").'.'.$ex;
                             $path     = $files[$key]->getRealPath();
-                            $img      = Image::make($path)->resize(null, 315, function ($constraint) {
+                            $img      = Image::make($path)->resize(null, 630, function ($constraint) {
                                 $constraint->aspectRatio();
                             });
                             $img->save(public_path("picture/img/". $pictName));
-                            $thumb    = Image::make($path)->resize(null, 120, function ($constraint) {
+                            $thumb    = Image::make($path)->resize(null, 200, function ($constraint) {
                                 $constraint->aspectRatio();
                             });
                             $thumb->save(public_path("picture/thumb/". $pictName));
