@@ -60,9 +60,6 @@ div.comment p {
 .description table {
   max-width: 100%;
 }
-.gambarUtama img {
-	display:block; margin-left:auto; margin-right:auto;
-}
 .bodyShow img {
 	max-width: 100%; height: auto;
 }

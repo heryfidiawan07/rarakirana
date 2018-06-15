@@ -33,17 +33,18 @@
         @endif
       @endif
     
-      @if(Auth::check())
-        @if(Auth::user())
-          <span data-url="/comment-like/{{$comment->id}}" class="comlike glyphicon glyphicon-thumbs-up" id="{{$comment->id}}" style="color: blue;"></span>
+      @if($emoji->count())
+        @if(Auth::check())
+          @if(Auth::user())
+            <span data-url="/comment-like/{{$comment->id}}" class="comlike glyphicon glyphicon-thumbs-up" id="{{$comment->id}}" style="color: blue;"></span>
+          @endif
+        @else
+          <a href="/register"><span class="glyphicon glyphicon-thumbs-up"></span></a>
         @endif
-      @else
-        <a href="/register"><span class="glyphicon glyphicon-thumbs-up"></span></a>
+        <span class="comcount_{{$comment->id}}" style="margin-left: 5px;">{{$comment->likes->count()}}</span>
+
+        <span data-id="{{$comment->id}}" type="button" data-toggle="modal" data-target="#userscommentlikes_{{$comment->id}}" class="caret caretModal" data-url="/comment/{{$comment->id}}/get-user-like" style="margin-right: 15px;"></span>
       @endif
-
-      <span class="comcount_{{$comment->id}}" style="margin-left: 5px;">{{$comment->likes->count()}}</span>
-
-      <span data-id="{{$comment->id}}" type="button" data-toggle="modal" data-target="#userscommentlikes_{{$comment->id}}" class="caret caretModal" data-url="/comment/{{$comment->id}}/get-user-like" style="margin-right: 15px;"></span>
 
       @include('layouts.partials.modal-comment-like')
 

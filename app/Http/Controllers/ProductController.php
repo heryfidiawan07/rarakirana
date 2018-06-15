@@ -15,6 +15,7 @@ use App\Forum;
 use App\Picture;
 use App\Product;
 use App\Comment;
+use App\Emoticon;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -139,7 +140,8 @@ class ProductController extends Controller
             $hothreads  = Forum::where('status', 1)->withCount('comments')->orderBy('comments_count', 'desc')->paginate(4);
             $newproducts = Product::where('status', 1)->latest()->paginate(4);
             $newthreads  = Forum::where('status', 1)->latest()->paginate(4);
-            return view('product.show', compact('product','pictures','promos','comments','commentos','hotproducts','hothreads','newproducts','newthreads'));
+            $emoji = Emoticon::all();
+            return view('product.show', compact('product','pictures','promos','comments','commentos','hotproducts','hothreads','newproducts','newthreads','emoji'));
         }else{
             return view('errors.503');
         }

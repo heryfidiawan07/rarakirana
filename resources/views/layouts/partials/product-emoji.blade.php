@@ -15,6 +15,7 @@
 
 			<span style="margin-left: 5px;">{{$product->likes->where('emoticon_id',$emo->id)->count()}}</span>
 			<span data-mid="{{$emo->id}}" data-pid="{{$emo->id}}" type="button" data-toggle="modal" data-target="#usersvote_{{$emo->id}}" class="caret caretVotes" data-url="/emoji/{{$emo->id}}/get/{{$product->id}}/product-users-vote"></span>
+			<p style="width: 35px; text-align: center;">{{$emo->emoji}}</p>
 
 			<div id="usersvote_{{$emo->id}}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
 			  <div class="modal-dialog modal-lg" role="document">

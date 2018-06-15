@@ -11,6 +11,7 @@ use App\Forum;
 use App\Comment;
 use App\Like;
 use App\Product;
+use App\Emoticon;
 use Illuminate\Http\Request;
 
 class ForumController extends Controller
@@ -152,6 +153,7 @@ class ForumController extends Controller
         $menu     = Menu::where('url',$menuslug)->first();
         $parent   = Menu::where('forum',1)->first();
         $thread   = Forum::whereSlug($forumSlug)->first();
+        $emoji    = Emoticon::all();
         //===========
         $hotproducts = Product::where('status', 1)->withCount('comments')->orderBy('comments_count', 'desc')->paginate(4);
         $hothreads  = Forum::where('status', 1)->withCount('comments')->orderBy('comments_count', 'desc')->paginate(4);
@@ -163,7 +165,7 @@ class ForumController extends Controller
             $promos = Promo::where([['menu_id', $menu->id],['status',1]])->get();
             if ($thread) {
                 $comments = $thread->comments()->orderBy('created_at')->paginate(10);
-                return view('forum.show',compact('thread','logo','promos','comments','commentos','parent','hotproducts','hothreads','newproducts','newthreads'));
+                return view('forum.show',compact('thread','logo','promos','comments','commentos','parent','hotproducts','hothreads','newproducts','newthreads','emoji'));
             }else{
                 return view('errors.503');    
             }

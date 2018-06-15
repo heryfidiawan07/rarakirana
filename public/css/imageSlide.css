@@ -11,8 +11,8 @@
 }
 #carousel-image-generic {
 	max-width: 100%;
-	height: 315px;
 	overflow: hidden;
+	background-color: black;
 }
 .carousel-image-inner div {
 	position: absolute;
@@ -21,7 +21,31 @@
 }
 .carousel-image-inner img {
 	max-width: 100%;
-	height: auto;
+	max-height: 315px;
 	margin: 0 auto;
 	display: block;
+}
+@media screen and (max-width: 450px){
+	#carousel-image-generic {
+		height: 170px;
+	}
+	#carousel-image-generic img {
+		height: 170px;	
+	}
+}
+@media screen and (min-width: 450px){
+	#carousel-image-generic {
+		height: 250px;
+	}
+	#carousel-image-generic img {
+		height: 250px;	
+	}
+}
+@media screen and (min-width: 800px){
+	#carousel-image-generic {
+		height: 315px;
+	}
+	#carousel-image-generic img {
+		height: 315px;	
+	}
 }

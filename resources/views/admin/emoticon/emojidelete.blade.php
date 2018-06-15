@@ -1,3 +1,4 @@
+@if($emoji->id > 1)
 <a class="btn btn-danger btn-xs" href="#" type="button"  data-toggle="modal" data-target=".deleteemoji_{{$emoji->id}}">
   <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
   <small> Hapus ?</small>
@@ -22,3 +23,4 @@
     </div>
   </div>
 </div>
+@endif
