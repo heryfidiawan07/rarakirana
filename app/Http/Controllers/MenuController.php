@@ -22,7 +22,7 @@ class MenuController extends Controller
             $menus   = Menu::latest()->get();
         }
         $parents = Menu::has('parent')->get();
-        $induxs  = Menu::has('products','<',1)->has('childs','<',1)->has('forum','<',1)->get();
+        $induxs  = Menu::has('products','<',1)->has('childs','<',1)->has('forum','<',1)->where('contact','!=',1)->get();
         $forum   = Menu::where('forum',1)->first();
         return view('admin.menu.index', compact('menus','induxs','parents','forum'));
     }

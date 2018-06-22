@@ -1,4 +1,5 @@
 @if(count($homePromo))
+  <hr>
   <table class="table">
   <tr>
 

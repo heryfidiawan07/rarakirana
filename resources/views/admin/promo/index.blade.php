@@ -13,7 +13,7 @@
         {{ csrf_field() }}
 
         <div class="form-group{{ $errors->has('color') ? ' has-error' : '' }}">
-            <label for="color" class="control-label">Pilih Background Color Promo :</label>
+            <label for="color" class="control-label">Background Color :</label>
             <input id="color" type="color" class="form-control" name="color" value="{{ old('color') }}" required autofocus>
             @if ($errors->has('color'))
               <span class="help-block">
@@ -76,8 +76,9 @@
   	</div>
       
   </div>
-  <hr>
+  
   @if(count($homePromo))
+    <hr>
     <h5 style="width: 30%; border-bottom: 3px solid brown;"><span class="glyphicon glyphicon-tag" aria-hidden="true"></span> Home</h5>
     <div class="scrollpromo">
       @foreach ($homePromo as $prm)    
@@ -91,7 +92,6 @@
     </div>
     <hr>
   @endif
-  <hr>
   
   @foreach ($promosi as $prom)
     <h5 style="width: 30%; border-bottom: 3px solid brown;"><span class="glyphicon glyphicon-tag" aria-hidden="true"></span> {{$prom[0]->menu->menu}}</h5>
@@ -110,7 +110,6 @@
 
   <div class="row">
     <h3 class="text-center"><u>DISPLAY PROMO</u></h3>
-    <hr>
     @include('admin.promo.display')
   </div>
 

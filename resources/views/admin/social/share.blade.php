@@ -7,6 +7,9 @@
       width: 10px;
       margin-left: 5px;
     }
+    .fa {
+      margin-bottom: 10px;
+    }
   </style>
 @stop
 @section('content')

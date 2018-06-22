@@ -21,6 +21,7 @@
                 " class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Buat Thread</a>
             </h5>
         	@if($threads->count())
+            <div class="table-responsive">
               <table class="table table-hover">
                 @foreach($threads as $thread)
                   <tr>
@@ -44,6 +45,7 @@
                   </tr>
                 @endforeach
               </table>
+            </div>
             @endif
     	</div>
         <div class="col-md-3"></div>

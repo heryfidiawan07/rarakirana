@@ -28,10 +28,10 @@ class ShareController extends Controller
         $sosmed = ['facebook','twitter','google','pinterest','linkedin','whatsapp'];
         $shareUrl = [
             "https://www.facebook.com/sharer/sharer.php?u=Request::url()",
-            "https://twitter.com/share?url=Request::url()&text=",
+            "https://twitter.com/share?url=Request::url()",
             "https://plus.google.com/share?url=Request::url()",
-            "https://pinterest.com/pin/create/button/?url=Request::url()&description=",
-            "https://www.linkedin.com/shareArticle?url=true&url=Request::url()&title=",
+            "https://pinterest.com/pin/create/button/?url=Request::url()",
+            "https://www.linkedin.com/shareArticle?url=true&url=Request::url()",
             "whatsapp://send?text=Request::url()"
         ];
         for ($i=0; $i < count($sosmed); $i++) { 

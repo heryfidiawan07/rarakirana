@@ -15,8 +15,9 @@
 <div class="modal fade commentStatus_{{$product->id}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
-
-      <h5 class="text-center">Bolehkan komentar ?</h5>
+      <div class="modal-header">
+        <h5 class="text-center">Bolehkan komentar ?</h5>
+      </div>
       <div class="modal-body">
         <div class="form-group">
           <div class="text-center">

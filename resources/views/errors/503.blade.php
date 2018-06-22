@@ -25,71 +25,10 @@
     <link rel="stylesheet" type="text/css" href="/css/style.css">
     <link rel="stylesheet" type="text/css" href="/css/promoSlide.css">
     <link rel="stylesheet" type="text/css" href="/css/error.css">
+    <link rel="stylesheet" type="text/css" href="/css/headerandfooter.css">
+    <link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet">
     @yield('css')
     <link href='<?php if(count($webtitle)){ echo '/part/'.$webtitle->img; } ?>' rel='shortcut icon'>
-    <style type="text/css">
-        #app {
-            background-color: #ffffff;
-        }
-        .appName {
-            line-height: 50px; font-size: 16px;
-            color: #b300b3; font-weight: bold;
-        }
-        .sub {
-            color: #e64d00;
-        }
-        .navbar-fixed-top {
-            border-bottom: 3px solid #cc99ff;
-            position: sticky; margin-bottom: 0;
-        }
-        #app-navbar-collapse a {
-            color: #000;
-        }
-        #app-navbar-collapse a:hover {
-            background-color: #cc99ff;
-        }
-        #imgBrand {
-            max-width: 100%; height: 40px; position: absolute; margin-top: -9px;
-        }
-        .content {
-            min-height: 90vh;
-        }
-        .menusFot {
-            width: 70%;
-            margin: 0 auto;
-        }
-        .a-foot {
-            display: inline-block;
-        }
-        .a-foot:hover {
-            color: #aa00ff;
-        }
-        .navbar-bottom {
-            border-bottom: unset; border-top: 2px solid #e64d00; 
-            margin-bottom: 0px; padding-top: 20px;
-        }
-        @media screen and (min-width: 350px){
-            .menusFot {
-                width: 100%;
-                margin: 0 auto;
-            }
-            .a-foot {
-                color: unset;
-                display: inline-block;
-                margin: 5px;
-            }   
-        }
-        @media screen and (min-width: 800px){
-            .menusFot {
-                width: 70%;
-                margin: 0 auto;
-            }
-            .a-foot {
-                color: unset;
-                display: inline-block;
-            }
-        }
-    </style>
     <!-- Scripts -->
     <script>
         window.Laravel = <?php echo json_encode([

@@ -9,7 +9,6 @@
           $req = Request::url();
           echo $url[0].$req.$url[1];
         ?>
-        @yield('title')
         "
         class="fa fa-{{$share->class}}" target="_blank">  
       </a>

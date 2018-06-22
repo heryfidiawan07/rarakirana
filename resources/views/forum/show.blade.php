@@ -23,7 +23,7 @@
       @endif
       
     <div class="col-md-8">
-      <div class="bodyShow media">
+      <div class="bodyShow media" style="margin-bottom: 20px;">
 
         @if($thread)
 
@@ -33,7 +33,7 @@
           
           <div class="row">
             <hr>
-            <div class="col-sm-6">
+            <div class="col-sm-6 userThread">
               <a href="/user/{{$thread->user->slug}}">
                 <img src="<?php if ($thread->user->img != null){ echo "/users/".$thread->user->img;}else if($thread->user->graph != null){echo $thread->user->graph;}else{echo $thread->user->avatar();} ?>" class="img-circle" alt="user" width="50">
               </a>
