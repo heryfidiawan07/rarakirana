@@ -1,4 +1,4 @@
-<h3 class="text-center sub animated fadeInLeft"><b>Populer</b></h3><hr>
+<h3 class="text-center sub animated fadeInLeft"><b>Hot News</b></h3><hr>
 <div class="hothreads">
   @foreach($hotproducts as $product)
     <a href="/{{$product->menu->url}}/read/{{$product->slug}}">

@@ -39,7 +39,7 @@
               @endif
             </div>
             @foreach($submenus as $sub)
-              @include('product.index')
+              @include('store.index')
             @endforeach
           @endif
           
@@ -50,13 +50,7 @@
 
       <div class="col-md-4">
         
-        @if(count($hotproducts))
-          <div class="news">
-            @include('product.hot-products')
-          </div>
-        @endif
-
-        @if($hotstores->count())
+        @if(count($hotstores))
           <div class="news">
             @include('store.hot-store')
           </div>
@@ -68,19 +62,25 @@
           </div>
         @endif
 
+        @if(count($hotproducts))
+          <div class="news">
+            @include('product.hot-products')
+          </div>
+        @endif
+
       </div>
       
       <div class="col-md-12">
 
-        @if($newproducts->count())
-          <div class="news">
-            @include('product.new-product')
-          </div>
-        @endif
-
         @if($newstores->count())
           <div class="news">
             @include('store.new-store')
+          </div>
+        @endif
+
+        @if($newproducts->count())
+          <div class="news">
+            @include('product.new-product')
           </div>
         @endif
         

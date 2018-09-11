@@ -45,4 +45,19 @@ class StatisticController extends Controller
         return view('admin.statistic.index',compact('stats','pages','views','browsers','referrens','visitors','gId','gstats'));
     }
 
+    public function delete(Request $request){
+        $this->validate($request, [
+                'hapusKunjungan' => 'required',
+            ]);
+        //$limit = new Carbon\Carbon()->addDays($request->hapusKunjungan);
+        $sub = $request->hapusKunjungan;
+        $date = Carbon::today(); //  DateTime string will be 2014-04-03 13:57:34
+        $date->subDays($sub);
+        $statistic = new Statistic;
+        $statistic->where('tanggal', '>', $date->toDateTimeString())->delete();
+
+        return back();
+    }
+    
+
 }

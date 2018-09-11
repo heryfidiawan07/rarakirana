@@ -114,6 +114,11 @@ div.scrollpromo figure {
 	height: 200px;
 	padding: 10px 10px;
 }
+#ui10 {
+	background-color: white;
+	height: 200px;
+	padding: 10px 10px;
+}
 .modal-body {
 	background-color: PaleGoldenRod;
 }

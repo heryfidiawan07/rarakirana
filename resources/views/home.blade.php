@@ -30,6 +30,10 @@
       <div class="col-xs-12 news">@include('product.new-product')</div>
     @endif
     <br>
+    @if($newstores->count())
+      <div class="col-xs-12 news">@include('store.new-store')</div>
+    @endif
+    <br>
     <div class="col-md-8 col-xs-12">
       @if($newthreads->count())
         <div class="news media">@include('forum.new-threads')</div>
@@ -40,6 +44,11 @@
     <div class="col-md-6 col-xs-12">
       @if(count($hotproducts))
         <div class="news media">@include('product.hot-products')</div>
+      @endif
+    </div>
+    <div class="col-md-6 col-xs-12">
+      @if(count($hotstores))
+        <div class="news media">@include('store.hot-store')</div>
       @endif
     </div>
     <div class="col-md-6 col-xs-12">

@@ -7,14 +7,14 @@
 <div class="container">
 
   	<div class="col-md-9 news">
-      <h5 class="text-center"><b>Edit Product</b></h5>
-    	<form method="POST" action="/admin/product/{{$product->id}}/update" enctype="multipart/form-data">
+      <h5 class="text-center"><b>Edit product</b></h5>
+    	<form method="POST" action="/admin/store/{{$store->id}}/update" enctype="multipart/form-data">
         {{ csrf_field() }}
         
         <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
           <label for="menu_id" class="control-label">Pilih Menu</label>
           <select style="background-color: PaleGoldenRod;" name="menu_id" class="form-control">
-            <option value="{{$product->menu_id}}">{{$product->menu->menu}}</option>
+            <option value="{{$store->menu_id}}">{{$store->menu->menu}}</option>
             @foreach($menus as $menu)
               <option value="{{$menu->id}}">{{$menu->menu}}</option>
             @endforeach
@@ -23,7 +23,7 @@
 
         <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
             <label for="title" class="control-label">Judul</label>
-            <input type="text" class="form-control" name="title" value="{{$product->title}}" required autofocus>
+            <input type="text" class="form-control" name="title" value="{{$store->title}}" required autofocus>
             @if ($errors->has('title'))
                 <span class="help-block">
                     <strong>{{ $errors->first('title') }}</strong>
@@ -33,10 +33,10 @@
 
         <div class="form-group{{ $errors->has('img') ? ' has-error' : '' }}">
             <div class="">
-              @foreach($pictures as $pict)
+              @foreach($displays as $pict)
               <div style="display: inline-block; text-align: center;">
-                <img src="/picture/thumb/{{$pict->thumb}}" width="100" height="100"><br>
-                <a class="btn btn-danger btn-xs" href="/admin/picture/{{$pict->id}}/destroy"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
+                <img src="/store/thumb/{{$pict->thumb}}" width="100" height="100"><br>
+                <a class="btn btn-danger btn-xs" href="/admin/display/{{$pict->id}}/destroy"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
               </div>
               @endforeach
             </div>
@@ -51,7 +51,7 @@
 
         <div class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">
             <label for="description" class="control-label">Deskripsi</label>
-            <textarea cols="10" rows="20" name="description" class="form-control">{{$product->description}}</textarea>
+            <textarea cols="10" rows="20" name="description" class="form-control">{{$store->description}}</textarea>
             @if ($errors->has('description'))
                 <span class="help-block">
                     <strong>{{ $errors->first('description') }}</strong>

@@ -134,10 +134,17 @@
       <div class="col-md-6">
         <div class="news media">
           @if($gstats->count())
-            <div style="overflow-x:auto; max-height: 400px; overflow-y: auto; margin-top: 50px;">
+            <h5 class="text-center">
+              <b>Daftar Kunjungan</b>
+              <form action="/admin/statistic/delete" method="POST" class="form-inline">
+                {{ csrf_field() }}
+                <input type="number" min="1" max="90" class="form-control" id="period" placeholder="7 hari terakhir" name="hapusKunjungan" style="width: 50%;">
+                <input type="submit" name="" class="btn btn-danger" value="Hapus !" style="width: 30%;">
+              </form>
+            </h5>
+            <div style="overflow-x:auto; max-height: 400px; overflow-y: auto;">
               <div class="table-responsive">
                 <table class="table table-hover">
-                  <h5 class="text-center"><b>Daftar Kunjungan</b></h5>
                   <tr>
                     <th>IP</th>
                     <th>Tanggal</th>

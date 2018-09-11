@@ -26,15 +26,26 @@
       		  <b>Posting berita atau artikel atau produk sesuai kebutuhan.</b>
           </div>
         	<hr>
-          <p class="pdashboard"><a href="/admin/product"><span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span> Post/Produk</a></p>
+          <p class="pdashboard"><a href="/admin/product"><span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span> Post/Artikel</a></p>
           @if($menus->count())
-            <p class="pdashboard"><a href="/admin/product/create"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Tambah Produk</a></p>
+            <p class="pdashboard"><a href="/admin/product/create"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Tambah Post</a></p>
           @endif
       	</div>
       </div>
 
       <div class="col-md-3 col-sm-4 col-xs-12 dashboardUi">
         <div id="ui3">
+          <div class="dashboad-title"><b>Posting product anda.</b></div>
+          <hr>
+          <p class="pdashboard"><a href="/admin/store"><span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span> Product</a></p>
+          @if($stores->count())
+            <p class="pdashboard"><a href="/admin/store/create"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Tambah Product</a></p>
+          @endif
+        </div>
+      </div>
+
+      <div class="col-md-3 col-sm-4 col-xs-12 dashboardUi">
+        <div id="ui4">
           <div class="dashboad-title"><b>Forum</b></div>
           <hr>
           <p class="pdashboard"><a href="/admin/forum"><span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span> Buka</a></p>
@@ -43,7 +54,7 @@
       </div>
 
       <div class="col-md-3 col-sm-4 col-xs-12 dashboardUi">
-        <div id="ui4">
+        <div id="ui5">
           <div class="dashboad-title">
             <b>Tambahkan logo agar website anda terlihat lebih profesional.</b>
           </div>
@@ -53,7 +64,7 @@
       </div>
 
       <div class="col-md-3 col-sm-4 col-xs-12 dashboardUi">
-        <div id="ui5">
+        <div id="ui6">
           <div class="dashboad-title">
             <b>Tambah sebuah promo atau update khusus untuk halaman utama.</b>
           </div>
@@ -63,7 +74,7 @@
       </div>
 
     	<div class="col-md-3 col-sm-4 col-xs-12 dashboardUi">
-      	<div id="ui6">
+      	<div id="ui7">
           <div class="dashboad-title"><b>Sosial Media</b></div>
           <hr>
           <p class="pdashboard"><a href="/admin/share"><span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span> Share</a></p>
@@ -72,7 +83,7 @@
       </div>
 
       <div class="col-md-3 col-sm-4 col-xs-12 dashboardUi">
-        <div id="ui7">
+        <div id="ui8">
           <div class="dashboad-title"><b>Statistik Pengunjung</b></div>
           <hr>
           <p class="pdashboard"><a href="/admin/users"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Daftar User</a></p>
@@ -81,7 +92,7 @@
       </div>
 
       <div class="col-md-3 col-sm-4 col-xs-12 dashboardUi">
-        <div id="ui8">
+        <div id="ui9">
           <div class="dashboad-title"><b>Pesan</b></div>
           <hr>
           <p class="pdashboard"><a href="/admin/inbox"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Buka</a></p>
@@ -89,14 +100,14 @@
       </div>
       
       <div class="col-md-3 col-sm-4 col-xs-12 dashboardUi">
-        <div id="ui9">
+        <div id="ui10">
           <div class="dashboad-title"><b>Emoji</b></div>
           <hr>
           <p class="pdashboard"><a href="/admin/emoji"><span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span> Buka</a></p>
         </div>
       </div>
     
-    <div class="col-md-9 col-sm-8 col-xs-12 dashboardUi">
+    <div class="col-md-6 col-sm-4 col-xs-12 dashboardUi">
       <div style="overflow-x:auto;">
         <div id="calendar">
           <div id="calendar_header">

@@ -33,6 +33,17 @@ Route::group(['middleware' => 'admin'], function () {
     Route::post('/admin/product/{id}/comment-status', 'ProductController@commentStatus');
   //Admin Picture
     Route::get('/admin/picture/{id}/destroy', 'PictureController@destroy');
+  //Admin Store
+    Route::get('/admin/store', 'StoreController@index');
+    Route::get('/admin/store/create', 'StoreController@create');
+    Route::post('/admin/store/store', 'StoreController@store');
+    Route::get('/admin/store/{id}/edit', 'StoreController@edit');
+    Route::post('/admin/store/{id}/update', 'StoreController@update');
+    Route::get('/admin/store/{id}/destroy', 'StoreController@destroy');
+    Route::post('/admin/store/{id}/status', 'StoreController@status');
+    Route::post('/admin/store/{id}/comment-status', 'StoreController@commentStatus');
+  //Admin Display
+    Route::get('/admin/display/{id}/destroy', 'DisplayController@destroy');
   //Admin Logo
     Route::get('/admin/logo', 'LogoController@index');
     Route::post('/admin/logo/store', 'LogoController@store');
@@ -76,6 +87,7 @@ Route::group(['middleware' => 'admin'], function () {
   //Admin Statistic
     Route::get('/admin/statistic', 'StatisticController@index');
     Route::get('/statistics-period', 'StatisticController@statistics');
+    Route::post('/admin/statistic/delete', 'StatisticController@delete');
   //File Manager
     Route::get('/admin/filemanager', '\Unisharp\Laravelfilemanager\controllers\LfmController@show');
     Route::post('/admin/filemanager/upload', '\Unisharp\Laravelfilemanager\controllers\UploadController@upload');
@@ -102,6 +114,12 @@ Route::get('/{menu}/read/{slug?}',['uses' =>'ProductController@show'], function 
 //Product Comment
 Route::post('/comment/{id}/product', 'CommentController@product');
 Route::post('/comment/{id}/product/update', 'CommentController@productUpdate');
+//Store Comment
+Route::post('/discusion/{id}/shop', 'DiscusController@store');
+Route::post('/discusion/{id}/shop/update', 'DiscusController@update');
+// User Store Show
+Route::get('/{url}','GlobalController@menu');
+Route::get('/{menu}/shop/{slug?}',['uses' =>'StoreController@show'], function ($menu, $slug) {});
 //Forum Comment
 Route::post('/comment/{id}/thread', 'CommentController@forum');
 Route::post('/comment/{id}/thread/update', 'CommentController@forumUpdate');
@@ -110,8 +128,12 @@ Route::get('/product-like/{lid}/product/{pid}', 'LikeController@productlike');
 Route::get('/thread-like/{lid}/thread/{fid}', 'LikeController@threadlike');
 //Comment Like
 Route::post('/comment-like/{id}', 'LikeController@commentlike');
+//Discus Like
+Route::post('/discus-like/{id}', 'LikeController@discuslike');
 //Melihat user yang like
 Route::get('/comment/{id}/get-user-like', 'LikeController@getUserLike');
+//Melihat user yang like pada diskusi
+Route::get('/discus/{id}/get-user-like', 'LikeController@getUserLikeDiscus');
 //Melihat User Vote
 Route::get('/emoji/{mid}/get/{pid}/product-users-vote', 'LikeController@getUserProductVote');
 Route::get('/emoji/{mid}/get/{pid}/thread-users-vote', 'LikeController@getUserThreadVote');

@@ -12,15 +12,14 @@ use App\User;
 use App\Like;
 use App\Promo;
 use App\Forum;
+use App\Display;
 use App\Store;
-use App\Picture;
 use App\Product;
 use App\Comment;
 use App\Emoticon;
-use App\Discusion;
 use Illuminate\Http\Request;
 
-class ProductController extends Controller
+class StoreController extends Controller
 {
     public function __construct()
     {
@@ -28,28 +27,28 @@ class ProductController extends Controller
     }
 
     public function index()
-    {   
-        $menus    = Menu::all();
-        $products = Product::latest()->paginate(8);
-        return view('admin.product.index', compact('products','menus'));
+    {
+        $menus  = Menu::all();
+        $stores = Store::latest()->paginate(8);
+        return view('admin.store.index', compact('stores','menus'));
     }
 
     public function create()
-    {   
+    {
         $forum = Menu::where('forum',1)->first();//Error jika menu forum belum di tentukan
         if ($forum) {
-            $menus = Menu::has('contact','<',1)->has('parent','<',1)->where([['parent_id','!=',$forum->id],['forum','!=',1]])->get();
+            $menus = Menu::has('contact','<',1)->has('parent','<',1)->has('products','<',1)->where([['parent_id','!=',$forum->id],['forum','!=',1]])->get();
         }else{
-            $menus = Menu::has('contact','<',1)->has('parent','<',1)->where('forum','!=',1)->get();
+            $menus = Menu::has('contact','<',1)->has('parent','<',1)->has('products','<',1)->where('forum','!=',1)->get();
         }
         
-        return view('admin.product.create', compact('menus'));
+        return view('admin.store.create', compact('menus'));
     }
 
     public function store(Request $request)
     {
         $this->validate($request, [
-                'title' => 'required|max:255|min:3|unique:products',
+                'title' => 'required|max:255|min:3|unique:stores',
                 'img' => 'required',
                 'menu_id' => 'required',
                 'description' => 'required',
@@ -73,7 +72,7 @@ class ProductController extends Controller
         }else{
             $user = Auth::user();
             $uniq = date("YmdHis");
-            $product = Product::create([
+            $store = Store::create([
                 'menu_id' => $request->menu_id,
                 'title' => $request->title,
                 'slug' => $titleSlug.'-'.$uniq,
@@ -81,7 +80,6 @@ class ProductController extends Controller
                 'description' => Purifier::clean($request->description, array('CSS.AllowTricky' => true , 'HTML.SafeIframe' => true , "URI.SafeIframeRegexp" => "%^(http://|https://|//)(www.youtube.com/embed/|player.vimeo.com/video/)%")),
                 'status' => $status,
                 'user_id' => $user->id,
-                'comment_status' => 1,
             ]); 
             $files = $request->file('img');
             $key   = 0;
@@ -92,34 +90,26 @@ class ProductController extends Controller
                 $img      = Image::make($path)->resize(null, 630, function ($constraint) {
                                 $constraint->aspectRatio();
                             });
-                $img->save(public_path("picture/img/". $pictName));
+                $img->save(public_path("store/img/". $pictName));
                 $thumb    = Image::make($path)->resize(null, 200, function ($constraint) {
                                 $constraint->aspectRatio();
                             });
-                $thumb->save(public_path("picture/thumb/". $pictName));
+                $thumb->save(public_path("store/thumb/". $pictName));
             $key++;
-                $picture = new Picture;
-                $picture->img        = $pictName;
-                $picture->thumb      = $pictName;
-                $picture->product_id = $product->id;
-                $picture->save();
+                $display = new Display;
+                $display->img      = $pictName;
+                $display->thumb    = $pictName;
+                $display->store_id = $store->id;
+                $display->save();
             }
-            return redirect('/admin/product');
+            return redirect('/admin/store');
         }
     }
 
     public function status(Request $request, $id){
-        $product = Product::find($id);
-        $product->update([
+        $store = Store::find($id);
+        $store->update([
                 'status' => $request->status,
-            ]);
-        return back();
-    }
-
-    public function commentStatus(Request $request, $id){
-        $product = Product::find($id);
-        $product->update([
-                'comment_status' => $request->status,
             ]);
         return back();
     }
@@ -127,25 +117,25 @@ class ProductController extends Controller
     public function show($parent, $child, $slug='')
     {
         if ($slug != null) {
-            $product  = Product::where([['slug', $slug],['status', 1]])->first();
+            $store  = Store::where([['slug', $slug],['status', 1]])->first();
         }else{
-            $product  = Product::where([['slug', $child],['status', 1]])->first();
-            //child berisi slug product karena menu tidak mempunyai parent_id / isi variable bergeser kekiri
+            $store  = Store::where([['slug', $child],['status', 1]])->first();
+            //child berisi slug Store karena menu tidak mempunyai parent_id / isi variable bergeser kekiri
         }
-        if (count($product)) {
-            $pictures  = $product->pictures()->get();
-            $promos    = Promo::where([['menu_id', $product->menu_id],['status',1]])->get();
-            $comments  = $product->comments()->orderBy('created_at')->paginate(10);
-            //$prodvotes = Like::where([['likeable_type','App\Product'],['likeable_id',$product->id]])->get();
+        if (count($store)) {
+            $displays  = $store->displays()->get();
+            $promos    = Promo::where([['menu_id', $store->menu_id],['status',1]])->get();
+            $discus    = $store->discusions()->orderBy('created_at')->paginate(10);
+            //$prodvotes = Like::where([['likeable_type','App\Product'],['likeable_id',$store->id]])->get();
             //=========
-            $hotproducts = Product::where('status', 1)->withCount('comments')->orderBy('comments_count', 'desc')->paginate(4);
             $hotstores   = Store::where('status', 1)->withCount('discusions')->orderBy('discusions_count', 'desc')->paginate(4);
+            $hotproducts = Product::where('status', 1)->withCount('comments')->orderBy('comments_count', 'desc')->paginate(4);
             $hothreads   = Forum::where('status', 1)->withCount('comments')->orderBy('comments_count', 'desc')->paginate(4);
-            $newproducts = Product::where('status', 1)->latest()->paginate(4);
             $newstores   = Store::where('status', 1)->latest()->paginate(4);
+            $newproducts = Product::where('status', 1)->latest()->paginate(4);
             $newthreads  = Forum::where('status', 1)->latest()->paginate(4);
-            $emoji = Emoticon::all();
-            return view('product.show', compact('product','pictures','promos','comments','commentos','hotproducts','hothreads','newproducts','newthreads','emoji','hotstores','newstores'));
+            $emoji       = Emoticon::all();
+            return view('store.show', compact('product','displays','comments','promos','discus','hotproducts','hothreads','newproducts','newthreads','emoji','store','hotstores','newstores'));
         }else{
             return view('errors.503');
         }
@@ -153,11 +143,11 @@ class ProductController extends Controller
 
     public function edit($id)
     {
-        $product = Product::whereId($id)->first();
+        $store = Store::whereId($id)->first();
         $forum = Menu::where('forum',1)->first();
         $menus = Menu::has('contact','<',1)->has('parent','<',1)->where('parent_id','!=',$forum->id)->get();
-        $pictures = $product->pictures()->get();
-        return view('admin.product.edit', compact('product','menus','pictures'));
+        $displays = $store->displays()->get();
+        return view('admin.store.edit', compact('store','menus','displays'));
     }
 
     public function update(Request $request, $id)
@@ -167,13 +157,13 @@ class ProductController extends Controller
                 'menu_id' => 'required',
                 'description' => 'required',
             ]);
-        $product = Product::whereId($id)->first();
+        $store = Store::whereId($id)->first();
         $titleSlug = str_slug($request->title);
         $img       = $request->file('img');
-        $jmlPict   = $product->pictures()->count();
+        $jmlPict   = $store->displays()->count();
 
         if(!isset($_POST['status'])){
-            $status = $product->status;
+            $status = $store->status;
         }else{
             $status = $request->status;
         }
@@ -182,8 +172,8 @@ class ProductController extends Controller
             if (count($img)+$jmlPict < 6) {
                 if (count($img) || $jmlPict) {
                     $user = Auth::user();
-                    $uniq = $product->uniq;
-                    $product->update([
+                    $uniq = $store->uniq;
+                    $store->update([
                         'menu_id' => $request->menu_id,
                         'title' => $request->title,
                         'slug' => $titleSlug.'-'.$uniq,
@@ -191,7 +181,6 @@ class ProductController extends Controller
                         'description' => Purifier::clean($request->description, array('CSS.AllowTricky' => true , 'HTML.SafeIframe' => true , "URI.SafeIframeRegexp" => "%^(http://|https://|//)(www.youtube.com/embed/|player.vimeo.com/video/)%")),
                         'status' => $status,
                         'user_id' => $user->id,
-                        'comment_status' => $product->comment_status,
                     ]); 
                     if (!empty($img)) {
                         $files = $request->file('img');
@@ -203,20 +192,20 @@ class ProductController extends Controller
                             $img      = Image::make($path)->resize(null, 630, function ($constraint) {
                                 $constraint->aspectRatio();
                             });
-                            $img->save(public_path("picture/img/". $pictName));
+                            $img->save(public_path("store/img/". $pictName));
                             $thumb    = Image::make($path)->resize(null, 200, function ($constraint) {
                                 $constraint->aspectRatio();
                             });
-                            $thumb->save(public_path("picture/thumb/". $pictName));
+                            $thumb->save(public_path("store/thumb/". $pictName));
                         $key++;
-                            $picture = new Picture;
-                            $picture->img        = $pictName;
-                            $picture->thumb      = $pictName;
-                            $picture->product_id = $product->id;
-                            $picture->save();
+                            $display = new Display;
+                            $display->img        = $pictName;
+                            $display->thumb      = $pictName;
+                            $display->Store_id = $store->id;
+                            $display->save();
                         }
                     }
-                    return redirect('/admin/product');
+                    return redirect('/admin/store');
                 }else {
                     $request->session()->flash('status', 'Gambar produk anda kosong, silahkan pilih foto untuk di unggah.');
                     return back();
@@ -233,27 +222,22 @@ class ProductController extends Controller
 
     public function destroy($id)
     {
-        $product = Product::find($id);
-        $picture = Picture::where('product_id',$product->id)->get();
-        for ($i=0; $i < count($picture); $i++) { 
-            $img   = public_path("picture/img/".$picture[$i]->img);
-            $thumb = public_path("picture/thumb/".$picture[$i]->thumb);
+        $store   = Store::find($id);
+        $display = Display::where('store_id',$store->id)->get();
+        for ($i=0; $i < count($display); $i++) { 
+            $img   = public_path("store/img/".$display[$i]->img);
+            $thumb = public_path("store/thumb/".$display[$i]->thumb);
             if (file_exists($img)) {
                 File::delete($img);
                 File::delete($thumb);
             }
         }
-        foreach ($picture as $pict) {
+        foreach ($display as $pict) {
             $pict->delete();
         }
-        $comment = Comment::where([['commentable_id',$product->id],['commentable_type','App\Product']])->get();
-        foreach ($comment as $comlike) {
-            $comlike->likes()->delete();
-        }
-        $product->comments()->delete();
-        $product->likes()->delete();
-        $product->delete();
+        $store->discusions()->delete();
+        //$store->likes()->delete();//favorit
+        $store->delete();
         return back();
     }
-
 }

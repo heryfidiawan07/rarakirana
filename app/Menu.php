@@ -5,6 +5,7 @@ namespace App;
 use App\User;
 use App\Logo;
 use App\Forum;
+use App\Store;
 use App\Product;
 use Illuminate\Database\Eloquent\Model;
 
@@ -42,6 +43,10 @@ class Menu extends Model
 
     public function products(){
         return $this->hasMany(Product::class);
+    }
+
+    public function stores(){
+        return $this->hasMany(Store::class);
     }
 
     public function logos(){

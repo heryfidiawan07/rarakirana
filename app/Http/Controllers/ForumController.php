@@ -10,8 +10,10 @@ use App\Menu;
 use App\Forum;
 use App\Comment;
 use App\Like;
+use App\Store;
 use App\Product;
 use App\Emoticon;
+use App\Discusion;
 use Illuminate\Http\Request;
 
 class ForumController extends Controller
@@ -28,13 +30,15 @@ class ForumController extends Controller
         $logo        = Logo::where('menu_id', $menu->id)->first();
         $promos      = Promo::where([['menu_id', $menu->id],['status',1]])->get();
         $newproducts = Product::where('status', 1)->latest()->paginate(4);
+        $newstores   = Store::where('status', 1)->latest()->paginate(4);
         $newthreads  = Forum::where('status', 1)->latest()->paginate(4);
         $hothreads   = Forum::where('status', 1)->withCount('comments')->orderBy('comments_count', 'desc')->paginate(4);
+        $hotstores   = Store::where('status', 1)->withCount('discusions')->orderBy('discusions_count', 'desc')->paginate(4);
         $hotproducts = Product::where('status', 1)->withCount('comments')->orderBy('comments_count', 'desc')->paginate(4);
         $categorys   = Menu::where('parent_id',$menu->id)->get();
         //End
         $request->session()->flash('status', 'Forum belum memiliki threads.');
-        return view('forum.index', compact('threads','logo','promos','newproducts','newthreads','hotproducts','hothreads','categorys','menu'));
+        return view('forum.index', compact('threads','logo','promos','newproducts','newthreads','hotproducts','hothreads','categorys','menu','newstores','hotstores'));
     }
     
     public function kategori(Request $request, $menu){
@@ -45,13 +49,15 @@ class ForumController extends Controller
         $logo        = Logo::where('menu_id', $menu->id)->first();
         $promos      = Promo::where([['menu_id', $menu->id],['status',1]])->get();
         $newproducts = Product::where('status', 1)->latest()->paginate(4);
+        $newstores   = Store::where('status', 1)->latest()->paginate(4);
         $newthreads  = Forum::where('status', 1)->latest()->paginate(4);
         $hothreads   = Forum::where('status', 1)->withCount('comments')->orderBy('comments_count', 'desc')->paginate(4);
         $hotproducts = Product::where('status', 1)->withCount('comments')->orderBy('comments_count', 'desc')->paginate(4);
+        $hotstores   = Store::where('status', 1)->withCount('discusions')->orderBy('discusions_count', 'desc')->paginate(4);
         $categorys   = Menu::where('parent_id',$menuForum->id)->get();
         //End
         $request->session()->flash('status', 'Kategori ini belum memiliki threads.');
-        return view('forum.index', compact('threads','logo','promos','newproducts','newthreads','hotproducts','hothreads','categorys','menu'));
+        return view('forum.index', compact('threads','logo','promos','newproducts','newthreads','hotproducts','hothreads','categorys','menu','newstores','hotstores'));
     }
     
     
@@ -156,16 +162,18 @@ class ForumController extends Controller
         $emoji    = Emoticon::all();
         //===========
         $hotproducts = Product::where('status', 1)->withCount('comments')->orderBy('comments_count', 'desc')->paginate(4);
+        $hotstores   = Store::where('status', 1)->withCount('discusions')->orderBy('discusions_count', 'desc')->paginate(4);
         $hothreads  = Forum::where('status', 1)->withCount('comments')->orderBy('comments_count', 'desc')->paginate(4);
         $newproducts = Product::where('status', 1)->latest()->paginate(4);
         $newthreads  = Forum::where('status', 1)->latest()->paginate(4);
+        $newstores   = Store::where('status', 1)->latest()->paginate(4);
 
         if ($menu) {
             $logo   = Logo::where('menu_id', $menu->id)->first();
             $promos = Promo::where([['menu_id', $menu->id],['status',1]])->get();
             if ($thread) {
                 $comments = $thread->comments()->orderBy('created_at')->paginate(10);
-                return view('forum.show',compact('thread','logo','promos','comments','commentos','parent','hotproducts','hothreads','newproducts','newthreads','emoji'));
+                return view('forum.show',compact('thread','logo','promos','comments','commentos','parent','hotproducts','hothreads','newproducts','newthreads','emoji','hotstores','newstores'));
             }else{
                 return view('errors.503');    
             }

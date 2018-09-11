@@ -1,20 +1,21 @@
 @extends('layouts.app')
 
 @section('css')
-	<link rel="stylesheet" type="text/css" href="/css/admin.css">
+	<link href="/css/admin.css">
 @stop
 @section('content')
 <div class="container">
+  <div class="row">
 
   	<div class="col-md-9 news">
-      <h5 class="text-center"><b>Edit Product</b></h5>
-    	<form method="POST" action="/admin/product/{{$product->id}}/update" enctype="multipart/form-data">
+      <h5 class="text-center"><b>Tulis Produk</b></h5>
+    	<form method="POST" action="/admin/store/store" enctype="multipart/form-data">
         {{ csrf_field() }}
         
-        <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
+        <div class="form-group{{ $errors->has('menu_id') ? ' has-error' : '' }}">
           <label for="menu_id" class="control-label">Pilih Menu</label>
           <select style="background-color: PaleGoldenRod;" name="menu_id" class="form-control">
-            <option value="{{$product->menu_id}}">{{$product->menu->menu}}</option>
+            <option value="">Pilih Menu</option>
             @foreach($menus as $menu)
               <option value="{{$menu->id}}">{{$menu->menu}}</option>
             @endforeach
@@ -23,7 +24,8 @@
 
         <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
             <label for="title" class="control-label">Judul</label>
-            <input type="text" class="form-control" name="title" value="{{$product->title}}" required autofocus>
+            <input type="text" class="form-control" name="title" value="{{ old('title') }}" required autofocus>
+
             @if ($errors->has('title'))
                 <span class="help-block">
                     <strong>{{ $errors->first('title') }}</strong>
@@ -32,26 +34,17 @@
         </div>
 
         <div class="form-group{{ $errors->has('img') ? ' has-error' : '' }}">
-            <div class="">
-              @foreach($pictures as $pict)
-              <div style="display: inline-block; text-align: center;">
-                <img src="/picture/thumb/{{$pict->thumb}}" width="100" height="100"><br>
-                <a class="btn btn-danger btn-xs" href="/admin/picture/{{$pict->id}}/destroy"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
-              </div>
-              @endforeach
-            </div>
-            <label for="img" class="control-label">Upload Gambar</label>
             @include('layouts.partials.multiupload')
-            @if(session('status'))
+            @if(session('img'))
                 <div class="alert alert-warning">
-                    {{session('status')}}
+                    {{session('img')}}
                 </div>
             @endif
         </div>
 
         <div class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">
             <label for="description" class="control-label">Deskripsi</label>
-            <textarea cols="10" rows="20" name="description" class="form-control">{{$product->description}}</textarea>
+            <textarea cols="10" rows="15" name="description" class="form-control">{{old('description')}}</textarea>
             @if ($errors->has('description'))
                 <span class="help-block">
                     <strong>{{ $errors->first('description') }}</strong>
@@ -80,17 +73,19 @@
 
         <div class="form-group">
             <button type="submit" class="btn btn-primary btn-sm">
-              <span class="glyphicon glyphicon-send" aria-hidden="true"></span> update
+              <span class="glyphicon glyphicon-send" aria-hidden="true"></span> simpan
             </button>
         </div>
       </form>
   	</div>
 
-  	<div class="col-md-3"></div>
+  	<div class="col-md-3">
+    </div>
 
+  </div>
 </div>
 @endsection
 @section('js')
-  <script type="text/javascript" src="//cdn.tinymce.com/4/tinymce.min.js"></script>
-  <script type="text/javascript" src="/js/mce.js"></script>
+  <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
+  <script src="/js/mce.js"></script>
 @endsection

@@ -81,6 +81,12 @@
           @include('product.hot-products')
         </div>
       @endif
+
+      @if($hotstores->count())
+        <div class="news">
+          @include('store.hot-store')
+        </div>
+      @endif
       
       @if($hothreads->count())
         <div class="news">
@@ -95,6 +101,12 @@
       @if($newproducts->count())
         <div class="news">
           @include('product.new-product')
+        </div>
+      @endif
+
+      @if($newstores->count())
+        <div class="news">
+          @include('store.new-store')
         </div>
       @endif
       

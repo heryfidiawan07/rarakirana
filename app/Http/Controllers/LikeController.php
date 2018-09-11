@@ -9,6 +9,7 @@ use App\Like;
 use App\Product;
 use App\Comment;
 use App\Emoticon;
+use App\Discusion;
 use Illuminate\Http\Request;
 
 class LikeController extends Controller
@@ -83,11 +84,43 @@ class LikeController extends Controller
         return response()->json(array('prnlike' => $prnlike->likes, 'status' => $status));
     }
 
+    public function discuslike(Request $request, $id){
+        $user = Auth::user();
+        $like = Like::where([['user_id',$user->id],['likeable_id',$id],['likeable_type','App\Discusion']])->first();
+        if (count($like) == 0){
+            if (Auth::user()) {
+                Like::create([
+                   'user_id' => $user->id,
+                   'likeable_id' => $id,//Komentar yang di like
+                   'likeable_type' => 'App\Discusion',
+                   'emoticon_id' => 1,// Emoticon harus ada
+                ]);
+            }
+            $status = '+1';
+        }else {
+            $like->delete();
+            $status = '-1';
+        }
+        $prnlike = Discusion::whereId($id)->first();
+        return response()->json(array('prnlike' => $prnlike->likes, 'status' => $status));   
+        //return "Like";
+    }
+    
+
     public function getUserLike($id){
         $likes = Like::where([['likeable_type','App\Comment'],['likeable_id',$id]])->get();
         $users = DB::table('users')
                 ->join('likes', 'likes.user_id', '=', 'users.id')
                 ->where([['likes.likeable_type','App\Comment'],['likes.likeable_id',$id]])
+                ->get();
+        return response()->json(array('users'=>$users,'likes'=>$likes));
+    }
+
+    public function getUserLikeDiscus($id){
+        $likes = Like::where([['likeable_type','App\Discusion'],['likeable_id',$id]])->get();
+        $users = DB::table('users')
+                ->join('likes', 'likes.user_id', '=', 'users.id')
+                ->where([['likes.likeable_type','App\Discusion'],['likes.likeable_id',$id]])
                 ->get();
         return response()->json(array('users'=>$users,'likes'=>$likes));
     }

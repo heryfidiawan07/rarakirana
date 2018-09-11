@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Logo;
 use App\Promo;
 use App\Forum;
+use App\Store;
 use App\Product;
 use Illuminate\Http\Request;
 
@@ -18,6 +19,8 @@ class HomeController extends Controller
     		$newthreads  = Forum::where('status', 1)->latest()->paginate(4);
     		$hothreads   = Forum::where('status', 1)->withCount('comments')->orderBy('comments_count', 'desc')->paginate(4);
     		$hotproducts = Product::where('status', 1)->withCount('comments')->orderBy('comments_count', 'desc')->paginate(4);
-        return view('home', compact('logo','promos','newproducts','newthreads','hothreads','hotproducts'));
+            $newstores   = Store::where('status', 1)->latest()->paginate(4);
+            $hotstores   = Store::where('status', 1)->withCount('discusions')->orderBy('discusions_count', 'desc')->paginate(4);
+        return view('home', compact('logo','promos','newproducts','newthreads','hothreads','hotproducts','newstores','hotstores'));
     }
 }

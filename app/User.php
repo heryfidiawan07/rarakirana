@@ -5,6 +5,7 @@ namespace App;
 use App\Like;
 use App\Forum;
 use App\Comment;
+use App\Discusion;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -59,6 +60,10 @@ class User extends Authenticatable
 
     public function comments(){
         return $this->hasMany(Comment::class);
+    }
+
+    public function discusions(){
+        return $this->hasMany(Discusion::class);
     }
     
 }

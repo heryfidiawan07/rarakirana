@@ -15,6 +15,13 @@
 .product-index {
   margin-bottom: 10px; position: relative; z-index: 2;
 }
+/**New Store**/
+.new-store {
+  display: inline-block; width: 320px; white-space: nowrap; padding-right: 10px; padding-left: 10px;
+}
+.new-store .store-title {
+  white-space: normal; display: flex; height: 3em;
+}
 /**New Product**/
 .new-product {
   display: inline-block; width: 320px; white-space: nowrap; padding-right: 10px; padding-left: 10px;
